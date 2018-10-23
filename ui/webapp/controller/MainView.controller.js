@@ -4,6 +4,6 @@ sap.ui.define([
 	"use strict";
 
 	return Controller.extend("com.epam.ui.controller.MainView", {
-
+ 
 	});
 });
