@@ -1,6 +1,10 @@
 context LoyaltyCards {
+    
     entity Shops {
         key ID       : Integer;
             shopName : String(50);
+            shopSite:  String(50);
     }
+    
+    
 };
