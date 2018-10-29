@@ -4,27 +4,55 @@ context LoyaltyCards {
         key ID       : Integer;
             shopName : String(50);
             shopSite : String(50);
-            logotype : string(50);
+            logotype : blob;
                 }
     
-     entity customers {
+     entity Customers {
         key ID       : Integer;
-            lastname : String(50);
-            firstname: String(50);
-            nickname : String(50);
-            bday     : dats;
-            telnumber: String(30);
-            email    : string(50);
-            foto     : string(50);
+            lastName : String(50);
+            firstName: String(50);
+            middleName : String(50);
+            bDay     : Date;
+            sex      : String(10);
+            telNumber: String(30);
+            email    : String(50);
+            
                 }
-      entity cards {
-        key id	    	 : integer;
-        	shopId       : integer;
-        	cardnumber   : integer;
-        	customerId   : integer;
-        	        }
-        	        
- 
+     entity CustomersFoto{
+     	key id    :integer;
+     	key customerId : Integer;
+     		foto     : blob;
+     }           
+                
+      entity Cards {
+        key id	    	 : Integer;
+        	shopId       : Integer;
+        	cardNumber   : Integer;
+        	customerId   : Integer;
+        	discount     : Decimal(5,2);
+        	points       : Integer;
+      }
+     entity Transactions {
+     	key id	  	 : Integer;
+     	key	shopId	 : Integer;
+     		cardId   : Integer;
+     		cashier  : String(50);
+     		dateTime : SECONDDATE;
+     		amount   : Decimal(15,2);
+     		amountDiscount : Decimal(15,2);
+          }   
     
-    
-};
+     entity Products {
+     	key id	  	 : Integer;
+     		description : String(50);
+     		category :  String(20);
+     		price    : Decimal(15,2);
+          }   
+          
+     entity TransactionItems {
+    	key transId : Integer;
+    	key prodId  : Integer;
+    	quantity : Decimal(15,2);
+     }
+        	
+ };
