@@ -3,8 +3,28 @@ context LoyaltyCards {
     entity Shops {
         key ID       : Integer;
             shopName : String(50);
-            shopSite:  String(50);
-    }
+            shopSite : String(50);
+            logotype : string(50);
+                }
+    
+     entity customers {
+        key ID       : Integer;
+            lastname : String(50);
+            firstname: String(50);
+            nickname : String(50);
+            bday     : dats;
+            telnumber: String(30);
+            email    : string(50);
+            foto     : string(50);
+                }
+      entity cards {
+        key id	    	 : integer;
+        	shopId       : integer;
+        	cardnumber   : integer;
+        	customerId   : integer;
+        	        }
+        	        
+ 
     
     
 };
