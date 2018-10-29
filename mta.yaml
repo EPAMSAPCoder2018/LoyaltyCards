@@ -1,5 +1,5 @@
 ID: Cards
-_schema-version: '3.1'
+_schema-version: '2.1'
 version: 0.0.1
 modules:
   - name: db
