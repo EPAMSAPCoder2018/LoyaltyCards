@@ -1,0 +1,64 @@
+{
+	"format_version": 1,
+	"imports": [{
+		"target_table": "LoyaltyCards.Shops",
+		"source_data": {
+			"data_type": "CSV",
+			"file_name": "Shops.csv",
+			"has_header": true,
+			"delete_existing_foreign_data": true,
+			"dialect": "HANA",
+			"type_config": {
+				"delimiter": ";"
+			}
+		},
+		"import_settings": {
+			"import_columns": [
+				"ID",
+				"shopName",
+				"shopSite",
+				"logo"
+			]
+		},
+		"column_mappings": {
+			"ID": 1,
+			"shopName": 2,
+			"shopSite": 3,
+			"logo": 4
+		}
+	}, {
+		"target_table": "LoyaltyCards.Customers",
+		"source_data": {
+			"data_type": "CSV",
+			"file_name": "Customers.csv",
+			"has_header": true,
+			"delete_existing_foreign_data": true,
+			"dialect": "HANA",
+			"type_config": {
+				"delimiter": ";"
+			}
+		},
+		"import_settings": {
+			"import_columns": [
+				"ID",
+				"lastName",
+				"firstName",
+				"middleName",
+				"bDay",
+				"sex",
+				"telNumber",
+				"email"
+			]
+		},
+		"column_mappings": {
+			"ID": 1,
+			"lastName": 2,
+			"firstName": 3,
+			"middleName": 4,
+			"bDay": 5,
+			"sex": 6,
+			"telNumber": 7,
+			"email": 8
+		}
+	}]
+}

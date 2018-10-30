@@ -1,0 +1,2 @@
+SEQUENCE "seq::customerPhotoSeq" START WITH 1000000 MAXVALUE 1999999
+RESET BY SELECT IFNULL(MAX("id"), 1000000) + 1 FROM "LoyaltyCards.CustomersPhoto"

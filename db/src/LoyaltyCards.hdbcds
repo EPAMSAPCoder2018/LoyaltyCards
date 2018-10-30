@@ -54,4 +54,9 @@ context LoyaltyCards {
         key prodId   : Integer;
             quantity : Decimal(15, 2);
     }
+    
+    entity photoStaging {
+        key id         : Integer;
+            photo      : LargeBinary;
+    }
 };
