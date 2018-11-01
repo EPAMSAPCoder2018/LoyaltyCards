@@ -5,29 +5,41 @@ var type = $.request.method;
 var responseBody = {};
 switch ($.request.method) {
 case $.net.http.GET:
-	var photoId = $.request.parameters.get("id");
-	responseBody = getPhoto(photoId);
+	var id = $.request.parameters.get("id");
+	responseBody = getImage(id);
 	$.xs.requestUtil.prepareCustomResponse(responseBody, "image/png");
 	break;
 
 case $.net.http.POST:
-	responseBody = createPhoto();
+	responseBody = createImage();
 	$.xs.requestUtil.prepareCustomResponse(responseBody, "image/png");
 	break;
 }
 
-function getPhoto(photoId) {
+function getImage(id) {
 	var connection = $.xs.dbUtil.getConnection();
-	var fromStaging = $.request.parameters.get("fromStaging") === "true";
-	if (photoId) {
+	var from = $.request.parameters.get("source");
+	if (id && from) {
 		try {
 			// /*id <INTEGER>*/,
 			// /*customerId <INTEGER>*/,
 			// ''/*photo <BLOB>*/
-			var selectPhotoStatement = 'SELECT "photo" FROM ' + fromStaging ? '"LoyaltyCards.photoStaging"' : '"LoyaltyCards.CustomersPhoto"' +
-				' WHERE "id"=?';
-			var photo = connection.executeQuery(selectPhotoStatement, photoId)[0].photo;
-			return photo;
+			var selectStatement = '';
+			switch (from) {
+			case "staging":
+				selectStatement = 'SELECT "photo" as "data" FROM "LoyaltyCards.photoStaging" WHERE "id"=?';
+				break;
+			case "customer":
+				selectStatement = 'SELECT "photo" as "data" FROM "LoyaltyCards.CustomersPhoto" WHERE "id"=?';
+				break;
+			case "shop":
+				selectStatement = 'SELECT "logo" as "data" FROM "LoyaltyCards.Shops" WHERE "ID"=?';
+				break;
+			}
+
+			var image = connection.executeQuery(selectStatement, id);
+			image = image[0].data;
+			return image;
 		} catch (e) {
 			throw e;
 		}
@@ -35,7 +47,7 @@ function getPhoto(photoId) {
 	return null;
 }
 
-function createPhoto() {
+function createImage() {
 	var connection = $.xs.dbUtil.getConnection();
 	try {
 		// /*id <INTEGER>*/,

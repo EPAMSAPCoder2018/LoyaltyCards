@@ -60,5 +60,35 @@
 			"telNumber": 7,
 			"email": 8
 		}
+	}, {
+		"target_table": "LoyaltyCards.Cards",
+		"source_data": {
+			"data_type": "CSV",
+			"file_name": "Cards.csv",
+			"has_header": true,
+			"delete_existing_foreign_data": true,
+			"dialect": "HANA",
+			"type_config": {
+				"delimiter": ";"
+			}
+		},
+		"import_settings": {
+			"import_columns": [
+				"id",
+				"shopId",
+				"cardNumber",
+				"customerId",
+				"discount",
+				"points"
+			]
+		},
+		"column_mappings": {
+			"id": 1,
+			"shopId": 2,
+			"cardNumber": 3,
+			"customerId": 4,
+			"discount": 5,
+			"points": 6
+		}
 	}]
 }
