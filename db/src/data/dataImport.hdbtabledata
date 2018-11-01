@@ -6,7 +6,7 @@
 			"data_type": "CSV",
 			"file_name": "Shops.csv",
 			"has_header": true,
-			"delete_existing_foreign_data": true,
+			"delete_existing_foreign_data": false,
 			"dialect": "HANA",
 			"type_config": {
 				"delimiter": ";"
@@ -32,7 +32,7 @@
 			"data_type": "CSV",
 			"file_name": "Customers.csv",
 			"has_header": true,
-			"delete_existing_foreign_data": true,
+			"delete_existing_foreign_data": false,
 			"dialect": "HANA",
 			"type_config": {
 				"delimiter": ";"
@@ -66,7 +66,7 @@
 			"data_type": "CSV",
 			"file_name": "Cards.csv",
 			"has_header": true,
-			"delete_existing_foreign_data": true,
+			"delete_existing_foreign_data": false,
 			"dialect": "HANA",
 			"type_config": {
 				"delimiter": ";"
@@ -89,6 +89,30 @@
 			"customerId": 4,
 			"discount": 5,
 			"points": 6
+		}
+	}, {
+		"target_table": "LoyaltyCards.CustomersPhoto",
+		"source_data": {
+			"data_type": "CSV",
+			"file_name": "CustomersPhoto.csv",
+			"has_header": true,
+			"delete_existing_foreign_data": false,
+			"dialect": "HANA",
+			"type_config": {
+				"delimiter": ";"
+			}
+		},
+		"import_settings": {
+			"import_columns": [
+				"id",
+				"customerId",
+				"photo"
+			]
+		},
+		"column_mappings": {
+			"id": 1,
+			"customerId": 2,
+			"photo": 3
 		}
 	}]
 }

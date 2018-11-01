@@ -1,0 +1,14 @@
+{
+  "welcomeFile": "/uicustomers/index.html",
+  "authenticationMethod": "route",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "routes": [
+    {
+      "source": "^/uicustomers/(.*)$",
+      "target": "$1",
+      "localDir": "webapp"
+    }
+  ]
+}

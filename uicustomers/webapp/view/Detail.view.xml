@@ -1,0 +1,58 @@
+<mvc:View busy="true" busyIndicatorDelay="0" xmlns:semantic="sap.m.semantic" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:mc="sap.suite.ui.microchart"
+	xmlns:f="sap.ui.layout.form" xmlns:vbm="sap.ui.vbm" xmlns:l="sap.ui.layout" controllerName="com.epam.uicustomers.controller.Detail"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<semantic:DetailPage navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detail.title} {customer/ID}">
+		<semantic:content>
+			<ObjectHeader responsive="true" fullScreenOptimized="true" icon="{='/services/image?id=' + ${customer/photo2} + '&amp;source=customer'}"
+				iconAlt="{customer/lastName} {customer/firstName} {customer/middleName}" intro=""
+				title="{customer/lastName} {customer/firstName} {customer/middleName}" titleActive="true" titlePress="handleTitlePress"
+				number="{card/discount} %" backgroundDesign="Translucent" numberState="Success">
+				<attributes>
+					<ObjectAttribute title="Пол" text="{customer/sex}"/>
+					<ObjectAttribute title="Эл. почта" text="{customer/email}" active="true"/>
+					<ObjectAttribute title="Телефон" text="{customer/telNumber}"/>
+					<ObjectAttribute title="Дата рождения" text="{customer/bDay}"/>
+				</attributes>
+				<statuses>
+					<ObjectStatus title="Статус" text="Активен" state="Success"/>
+				</statuses>
+				<headerContainer>
+					<IconTabBar id="itb1" selectedKey="key3" upperCase="true" class="sapUiResponsiveContentPadding">
+						<items>
+							<IconTabFilter icon="sap-icon://hint">
+								<Text text="Info content goes here ..."/>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://attachment" count="3">
+								<Text text="Attachments go here ..."/>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://notes" count="12">
+								<Text text="Notes go here ..."/>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://group">
+								<l:BlockLayout>
+									<l:BlockLayoutRow>
+										<l:BlockLayoutCell width="1">
+											<Image src="{='/services/image?id=' + ${customer/photo1} + '&amp;source=customer'}" densityAware="false" width="100%" height="100%" press="onPhotoPress">
+												<layoutData>
+													<FlexItemData growFactor="1"/>
+												</layoutData>
+											</Image>
+										</l:BlockLayoutCell>
+										<l:BlockLayoutCell width="1">
+											<Image src="{='/services/image?id=' + ${customer/photo2} + '&amp;source=customer'}" densityAware="false" width="50%" height="50%" press="onPhotoPress"></Image>
+											<Image src="{='/services/image?id=' + ${customer/photo3} + '&amp;source=customer'}" densityAware="false" width="50%" height="50%" press="onPhotoPress"></Image>
+										</l:BlockLayoutCell>
+									</l:BlockLayoutRow>
+								</l:BlockLayout>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</headerContainer>
+			</ObjectHeader>
+		</semantic:content>
+		<semantic:deleteAction>
+			<semantic:DeleteAction press="onDeletePress"/>
+		</semantic:deleteAction>
+	</semantic:DetailPage>
+</mvc:View>

@@ -38,6 +38,24 @@ modules:
          name: xs_api
          url: '~{url}'
 
+
+  - name: uicustomers
+    type: html5
+    path: uicustomers
+    parameters:
+       disk-quota: 256M
+       memory: 256M
+    build-parameters:
+       builder: grunt
+    requires:
+     - name: uaa_Cards
+     - name: dest_Cards
+     - name: xsjs_api
+       group: destinations
+       properties:
+         name: xs_api
+         url: '~{url}'
+
 resources:
   - name: Cards-hdi-container
     properties:

@@ -1,0 +1,35 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m"
+	controllerName="com.epam.uicustomers.controller.Master" xmlns:html="http://www.w3.org/1999/xhtml">
+	<semantic:MasterPage title="{i18n>masterTitle}">
+		<semantic:content>
+			<Toolbar>
+				<SearchField liveChange="onSearch" width="100%"/>
+			</Toolbar>
+			<List id="list" items="{/}" busyIndicatorDelay="0" growing="true" growingScrollToLoad="true" growingThreshold="10" mode="SingleSelectMaster"
+				selectionChange="onSelect">
+				<items>
+					<ObjectListItem title="{customer/lastName} {customer/firstName} {customer/middleName}"
+						type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelect">
+						<firstStatus>
+							<ObjectStatus state="Success" text="Размер скидки: {card/discount}"/>
+						</firstStatus>
+						<attributes>
+							<ObjectAttribute text="Номер карты {card/id}"/>
+						</attributes>
+					</ObjectListItem>
+				</items>
+			</List>
+		</semantic:content>
+		<semantic:addAction>
+			<semantic:AddAction press="onSemanticButtonPress"/>
+		</semantic:addAction>
+		<semantic:sort>
+			<semantic:SortSelect change="onSortingChange" items="{ path: 'technicalModel>/sortOptions', sorter: { path: 'technicalModel>name' } }">
+				<core:Item key="{technicalModel>type}" text="{technicalModel>name}"/>
+			</semantic:SortSelect>
+		</semantic:sort>
+		<semantic:filter>
+			<semantic:FilterAction press="onSemanticButtonPress"/>
+		</semantic:filter>
+	</semantic:MasterPage>
+</mvc:View>
