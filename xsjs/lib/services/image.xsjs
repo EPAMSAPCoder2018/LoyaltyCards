@@ -56,8 +56,12 @@ function createImage() {
 		var customerData = $.xs.requestUtil.extractMultiPartParameters();
 		var insertPhotosStatement = 'INSERT INTO "LoyaltyCards.photoStaging" VALUES("seq::customerPhotoSeq".nextVal,?)';
 		var dataToInsert = [];
-		for (var i = 0; i < customerData.photos.length; i++) {
-			dataToInsert.push([customerData.photos[i].data]);
+		if(customerData.photos && customerData.photos.length > 1){
+			for (var i = 0; i < customerData.photos.length; i++) {
+				dataToInsert.push([customerData.photos[i].data]);
+			}
+		}else if(customerData.photos){
+			dataToInsert.push(customerData.photos.data);
 		}
 		var res = connection.executeUpdate(insertPhotosStatement, dataToInsert);
 		connection.commit();
