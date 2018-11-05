@@ -1,9 +1,12 @@
 context LoyaltyCards {
     entity Shops {
-        key ID       : Integer;
-            shopName : String(50);
-            shopSite : String(50);
-            logo     : LargeBinary;
+        key ID          : Integer;
+            shopName    : String(50);
+            shopSite    : String(50);
+            shopAddress : String(50);
+            shopEmail   : String(50);
+            phoneNumber : String(15);
+            logo        : LargeBinary;
     }
 
     entity Customers {
@@ -54,9 +57,75 @@ context LoyaltyCards {
         key prodId   : Integer;
             quantity : Decimal(15, 2);
     }
-    
+
     entity photoStaging {
-        key id         : Integer;
-            photo      : LargeBinary;
+        key id    : Integer;
+            photo : LargeBinary;
     }
+
+    define view CardShop as
+        select from Cards
+        mixin
+        {
+            toShop : association [ 0..1 ] to Shops on
+                Cards.shopId = toShop.ID;
+        }
+        into
+        {
+            Cards.id        as CardID,
+            toShop.shopName as Shop,
+            toShop.shopSite as Site
+        };
+
+    define view CustomerCards as
+        select from Customers
+        mixin
+        {
+            toCards : association [ 0.. * ] to Cards on
+                toCards.customerId = Customers.ID;
+        }
+        into
+        {
+            Customers.firstName as Name,
+            Customers.lastName  as LastName,
+            toCards.cardNumber  as CardNumber,
+            toCards.discount    as Discount,
+            toCards.id          as CardID
+        };
+
+    define view LoyaltyCard as
+        select from CustomerCards
+        mixin
+        {
+            toShop : association [ 0..1 ] to CardShop on
+                CustomerCards.CardID = toShop.CardID;
+        }
+        into
+        {
+            CardID,
+            CardNumber,
+            Discount,
+            Name,
+            LastName,
+            toShop.Shop as ShopName,
+            toShop.Site as Site
+        };
+
+    define view Purchases as
+        select from Transactions
+        mixin
+        {
+            toItems : association [ 0.. * ] to TransactionItems on
+                Transactions.id = toItems.transId;
+        }
+        into
+        {
+            Transactions.id         as TransactionID,
+            Transactions.cardId     as CardID,
+            Transactions.amount     as Amount,
+            Transactions.createDate as PurchaseDate
+        }
+        order by
+            PurchaseDate desc
+        limit 10;
 };

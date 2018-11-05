@@ -1,0 +1,6 @@
+service {
+	"LoyaltyCards.LoyaltyCard" as "Card" key ("CardID") navigates ("CardPurchases" as "toPurchases");
+	"LoyaltyCards.Purchases" as "Purchases" key ("TransactionID");
+	
+		association "CardPurchases" principal "Card"("CardID") multiplicity "1" dependent "Purchases"("CardID") multiplicity "*";
+}
