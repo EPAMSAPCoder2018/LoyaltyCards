@@ -14,6 +14,9 @@ modules:
   - name: xsjs
     type: nodejs
     path: xsjs
+    parameters:
+      memory: 256M
+      disk-quota: 256M
     provides:
      - name: xsjs_api
        properties:
