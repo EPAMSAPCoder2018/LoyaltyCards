@@ -11,6 +11,9 @@ case $.net.http.GET:
 case $.net.http.POST:
 	responseBody = createCustomer();
 	break;
+case $.net.http.DELETE:
+	responseBody = deleteCustomer();
+	break;
 }
 $.xs.requestUtil.prepareResponse(responseBody);
 

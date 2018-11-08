@@ -4,7 +4,10 @@
   "logout": {
     "logoutEndpoint": "/do/logout"
   },
-  "routes": [
+  "routes": [{
+		"source": "/services/(.*)",
+		"destination": "xs_api"
+	}, 
     {
       "source": "^/uicustomers/(.*)$",
       "target": "$1",
