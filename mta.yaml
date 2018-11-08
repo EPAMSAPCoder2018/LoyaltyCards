@@ -59,6 +59,19 @@ modules:
          name: xs_api
          url: '~{url}'
 
+
+  - name: uishops
+    type: html5
+    path: uishops
+    parameters:
+       disk-quota: 256M
+       memory: 256M
+    build-parameters:
+       builder: grunt
+    requires:
+     - name: uaa_Cards
+     - name: dest_Cards
+
 resources:
   - name: Cards-hdi-container
     properties:

@@ -1,0 +1,72 @@
+<mvc:View controllerName="com.epam.uishop.controller.ShopsList" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<List
+						id="list"
+						width="auto"
+						class="sapFDynamicPageAlignContent"
+						items="{/}"
+						busyIndicatorDelay="{masterView>/delay}"
+						noDataText="{masterView>/noDataText}"
+						mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+						growing="true"
+						growingScrollToLoad="true"
+						updateFinished="onUpdateFinished"
+						selectionChange="onSelectionChange">
+						<headerToolbar>
+							<OverflowToolbar>
+								<ToolbarSpacer/>
+								<SearchField
+									id="searchField"
+									showRefreshButton="true"
+									tooltip="{i18n>searchTooltip}"
+									width="100%"
+									liveChange="onSearch">
+									<layoutData>
+										<OverflowToolbarLayoutData
+											minWidth="150px"
+											maxWidth="250px"
+											shrinkable="true"
+											priority="NeverOverflow"/>
+									</layoutData>
+								</SearchField>
+							</OverflowToolbar>
+						</headerToolbar>
+						<items type="Navigation">
+							<ObjectListItem
+								type="Navigation"
+								press="onSelectionChange"
+								title="{shopName}"
+								icon="{='/services/image?ID=' + ${ID} + '&amp;source=shop'}"
+								iconDensityAware="false">
+								<attributes>
+									<ObjectAttribute
+										title="{i18n>adress}" 
+										text="{shopAddress}"/>
+									<ObjectAttribute 
+										id="Link" 
+										title="{i18n>web}" 
+										text="{shopSite}" 
+										active="true" 
+										press="handleLinkObjectAttributePress"/>
+									<ObjectAttribute
+									text="{
+										parts: [
+											{path: 'i18n>phone'},
+											{path: 'phoneNumber'},
+											{path: 'i18n>email'},
+											{path: 'shopEmail'}
+										]
+									}"/>
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
