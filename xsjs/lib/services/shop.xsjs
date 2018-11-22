@@ -23,8 +23,8 @@ function createShop() {
 		try {
 			var shopID = connection.executeQuery('SELECT "seq::shopsSeq".nextVal "ID" FROM DUMMY')[0].ID;
 			shopData.shopID = shopID;
-			var insertShopStatement = 'INSERT INTO "LoyaltyCards.Shops" VALUES(?,?,?,?)';
-			connection.executeUpdate(insertShopStatement, shopID, shopData.shopName, shopData.shopSite, shopData.logo.data);
+			var insertShopStatement = 'INSERT INTO "LoyaltyCards.Shops" VALUES(?,?,?,?,?,?,?)';
+			connection.executeUpdate(insertShopStatement, shopID, shopData.shopName, shopData.shopSite, shopData.shopAddress, shopData.shopEmail, shopData.phoneNumber, shopData.logo.data);
 			connection.commit();
 		} catch (e) {
 			connection.rollback();

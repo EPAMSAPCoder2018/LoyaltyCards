@@ -16,7 +16,7 @@ modules:
     path: xsjs
     parameters:
       memory: 256M
-      disk-quota: 256M
+      disk-quota: 768M
     provides:
      - name: xs_api
        properties:

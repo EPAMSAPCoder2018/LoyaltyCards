@@ -17,6 +17,9 @@
 				"ID",
 				"shopName",
 				"shopSite",
+				"shopAddress",
+				"shopEmail",
+				"phoneNumber",
 				"logo"
 			]
 		},
@@ -24,7 +27,16 @@
 			"ID": 1,
 			"shopName": 2,
 			"shopSite": 3,
-			"logo": 4
+			"shopAddress": 4,
+			"shopEmail": 5,
+			"phoneNumber": 6,
+			"logo": { 
+			    "type" : "function", 
+			    "name" : "decodeBase16", 
+			    "parameters" : { 
+			      "column_number": 7
+			    } 
+			  } 
 		}
 	}, {
 		"target_table": "LoyaltyCards.Customers",
