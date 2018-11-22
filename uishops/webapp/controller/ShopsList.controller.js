@@ -3,11 +3,13 @@ sap.ui.define([
 	"com/epam/uishop/util/utils",
 	"com/epam/uishop/model/models",
 	"sap/ui/model/json/JSONModel",
-	'sap/ui/model/Filter'
-], function (Controller, Utils, models, JSONModel, Filter) {
+	"sap/ui/model/Filter",
+	"com/epam/uishop/model/formatter"
+], function (Controller, Utils, models, JSONModel, Filter, formatter) {
 	"use strict";
 	
 	return Controller.extend("sap.m.sample.ObjectHeader.ShopsList", {
+		formatter: formatter,
 		onInit: function () {
 			var that = this;
 			var component = that.getOwnerComponent();

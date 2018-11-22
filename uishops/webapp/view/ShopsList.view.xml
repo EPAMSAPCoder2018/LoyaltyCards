@@ -40,7 +40,7 @@
 								type="Navigation"
 								press="onSelectionChange"
 								title="{shopName}"
-								icon="{='/services/image?ID=' + ${ID} + '&amp;source=shop'}"
+								icon="{='/services/image?id=' + ${ID} + '&amp;source=shop'}"
 								iconDensityAware="false">
 								<attributes>
 									<ObjectAttribute
