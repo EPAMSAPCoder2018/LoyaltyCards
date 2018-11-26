@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/m/MessageToast",
-	"sap/ui/model/json/JSONModel"
-], function (Controller, MessageToast, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/routing/History"
+], function (Controller, MessageToast, JSONModel, History) {
 	"use strict";
 
 	return Controller.extend("com.epam.uicreatecustomer.controller.CreateCustomers", {
@@ -45,6 +46,19 @@ sap.ui.define([
 				this.getView().byId("inemail").setValueState(sap.ui.core.ValueState.Error);
 			}else {
 				this.getView().byId("inemail").setValueState(sap.ui.core.ValueState.None);
+			}
+		},
+		getRouter : function () {
+			return sap.ui.core.UIComponent.getRouterFor(this);
+		},
+		onResetChanges : function (oEvent) {
+			var oHistory, sPreviousHash;
+			oHistory = History.getInstance();
+			sPreviousHash = oHistory.getPreviousHash();
+			if (sPreviousHash !== undefined) {
+				window.history.go(-1);
+			} else {
+				this.getRouter().navTo("master", {}, true /*no history*/);
 			}
 		}
 	});
