@@ -15,6 +15,14 @@
 			"name": "xs_api"
 		}
 	}, {
+      "path": "/services/shop",
+      "target": {
+        "type": "destination",
+        "name": "xs_api",
+        "entryPath": "/services/shop.xsjs"
+      },
+		"description": "Shops Resources"
+    },{
 		"path": "/services/image",
 		"target": {
 			"type": "destination",

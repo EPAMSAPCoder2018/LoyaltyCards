@@ -73,6 +73,7 @@
 		"routing": {
 			"config": {
 				"viewPath": "com.epam.uicustomers.view",
+				"routerClass": "sap.m.routing.Router",
 				"controlId": "idAppControl",
 				"bypassed": {
 					"target": [
@@ -107,6 +108,14 @@
 					"viewName": "DetailObjectNotFound",
 					"viewId": "detailObjectNotFound"
 				},
+				"createCustomers": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "CreateCustomers",
+					"viewId": "createCustomers",
+					"viewLevel": 2
+				},
 				"notFound": {
 					"viewType": "XML",
 					"transition": "slide",
@@ -134,6 +143,16 @@
 					"target": [
 						"master",
 						"object"
+					]
+				},
+				{
+					"name": "createCustomers",
+					"pattern": "CreateCustomers",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"master",
+						"createCustomers"
 					]
 				}
 			]

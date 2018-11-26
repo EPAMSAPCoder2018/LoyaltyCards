@@ -1,0 +1,60 @@
+<mvc:View controllerName="com.epam.uicustomers.controller.CreateCustomers" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" 
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>createCustomersTitle}">
+				<Panel headerText="{/panelHeaderText}" class="sapUiResponsiveMargin sapFDynamicPageAlignContent" width="auto" expanded="{= !${device>/system/phone} }" >
+					<content>
+						<l:VerticalLayout  width="100%">
+							<l:HorizontalLayout class="sapUiContentPadding">
+						        <Label text="{i18n>lastName}" class="sapUiSmallMargin"/>
+						        <Input id="inlastName" width="398px"/>
+						    </l:HorizontalLayout>
+							<l:HorizontalLayout class="sapUiContentPadding">
+						        <Label text="{i18n>firstName}" class="sapUiSmallMargin"/>
+						        <Input id="infirstName" width="430px"/>
+						    </l:HorizontalLayout>
+							<l:HorizontalLayout class="sapUiContentPadding">						    
+						        <Label text="{i18n>middleName}" class="sapUiSmallMargin"/>
+						        <Input id="inmiddleName" width="395px"/>
+						    </l:HorizontalLayout>	
+							<l:HorizontalLayout class="sapUiContentPadding">						    
+						        <Label text="{i18n>bDay}" class="sapUiSmallMargin"/>
+						        <DatePicker id="inbDay" placeholder="{i18n>pbDat}" width="358px"/>
+						    </l:HorizontalLayout>
+							<l:HorizontalLayout class="sapUiContentPadding">						    
+						        <Label text="{i18n>sex}" class="sapUiSmallMargin"/>
+						        <Input id="insex" placeholder="{i18n>psex}" width="430px"/>
+						    </l:HorizontalLayout>	
+							<l:HorizontalLayout class="sapUiContentPadding">							    
+						        <Label text="{i18n>telNumber}"  class="sapUiSmallMargin"/>
+						        <Input id="intelNumber" placeholder="{i18n>ptelNumber}" width="330px"/>
+						    </l:HorizontalLayout>
+							<l:HorizontalLayout class="sapUiContentPadding">							    
+								<Label text="{i18n>email}" class="sapUiSmallMargin"/>
+								<Input id="inemail" type="Email" class="sapUiSmallMarginBottom" change="validateMail" valueLiveUpdate="true" width="420px"/>
+								<CheckBox id="inCheckBox" text="{i18n>enableCheck}" select="handleSelect"/>
+						    </l:HorizontalLayout>	
+				        </l:VerticalLayout>
+					</content>
+				</Panel>
+				<footer>
+					<Toolbar visible="{appView>/hasUIChanges}">
+						<ToolbarSpacer/>
+						<Button
+							id="saveButton"
+							type="Emphasized"
+							text="{i18n>saveButton}"
+							enabled="{= ${message>/}.length === 0 &amp;&amp; ${appView>/usernameEmpty} === false }"
+							press="onSave"/>
+						<Button
+							id="doneButton"
+							text="{i18n>cancelButton}"
+							press="onResetChanges"
+							class="sapUiTinyMarginEnd"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

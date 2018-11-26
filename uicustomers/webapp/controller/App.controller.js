@@ -11,7 +11,7 @@ sap.ui.define([
 			var component = that.getOwnerComponent();
 			var navigationParameter = component.getComponentData();
 			var shopId = navigationParameter && navigationParameter.startupParameters.shopId;
-			shopId = shopId || 1000004;
+			shopId = shopId || 1000006;
 			if (!component.getModel()) {
 				component.setModel(models.createEmptyJSONModel());
 			}

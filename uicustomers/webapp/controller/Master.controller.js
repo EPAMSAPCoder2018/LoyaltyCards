@@ -59,6 +59,11 @@ sap.ui.define([
 		onSortingChange: function () {
 
 		},
+		
+		onSemanticButtonPress: function (oEvent){
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("createCustomers");
+		},
 
 		onSearch: function (oEvt) {
 			// add filter for search
