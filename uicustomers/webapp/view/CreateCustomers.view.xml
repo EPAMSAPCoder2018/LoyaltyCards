@@ -1,43 +1,71 @@
 <mvc:View controllerName="com.epam.uicustomers.controller.CreateCustomers" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" 
-	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:semantic="sap.f.semantic">
 	<App id="idAppControl">
 		<pages>
 			<Page title="{i18n>createCustomersTitle}">
-				<Panel headerText="{/panelHeaderText}" class="sapUiResponsiveMargin sapFDynamicPageAlignContent" width="auto" expanded="{= !${device>/system/phone} }" >
-					<content>
-						<l:VerticalLayout  width="100%">
-							<l:HorizontalLayout class="sapUiContentPadding">
-						        <Label text="{i18n>lastName}" class="sapUiSmallMargin"/>
-						        <Input id="inlastName" width="398px"/>
-						    </l:HorizontalLayout>
-							<l:HorizontalLayout class="sapUiContentPadding">
-						        <Label text="{i18n>firstName}" class="sapUiSmallMargin"/>
-						        <Input id="infirstName" width="430px"/>
-						    </l:HorizontalLayout>
-							<l:HorizontalLayout class="sapUiContentPadding">						    
-						        <Label text="{i18n>middleName}" class="sapUiSmallMargin"/>
-						        <Input id="inmiddleName" width="395px"/>
-						    </l:HorizontalLayout>	
-							<l:HorizontalLayout class="sapUiContentPadding">						    
-						        <Label text="{i18n>bDay}" class="sapUiSmallMargin"/>
-						        <DatePicker id="inbDay" placeholder="{i18n>pbDat}" width="358px"/>
-						    </l:HorizontalLayout>
-							<l:HorizontalLayout class="sapUiContentPadding">						    
-						        <Label text="{i18n>sex}" class="sapUiSmallMargin"/>
-						        <Input id="insex" placeholder="{i18n>psex}" width="430px"/>
-						    </l:HorizontalLayout>	
-							<l:HorizontalLayout class="sapUiContentPadding">							    
-						        <Label text="{i18n>telNumber}"  class="sapUiSmallMargin"/>
-						        <Input id="intelNumber" placeholder="{i18n>ptelNumber}" width="330px"/>
-						    </l:HorizontalLayout>
-							<l:HorizontalLayout class="sapUiContentPadding">							    
-								<Label text="{i18n>email}" class="sapUiSmallMargin"/>
-								<Input id="inemail" type="Email" class="sapUiSmallMarginBottom" change="validateMail" valueLiveUpdate="true" width="420px"/>
-								<CheckBox id="inCheckBox" text="{i18n>enableCheck}" select="handleSelect"/>
-						    </l:HorizontalLayout>	
-				        </l:VerticalLayout>
-					</content>
-				</Panel>
+				<ObjectHeader responsive="true" fullScreenOptimized="true" intro="" title="{i18n>headerTitle}">
+				<headerContainer>
+					<IconTabBar id="itb1" selectedKey="key3" upperCase="true" class="sapUiResponsiveContentPadding">
+						<items>
+							<IconTabFilter icon="sap-icon://hint" text="{i18n>addInfo}">
+								<l:HorizontalLayout class="sapUiContentPadding">
+							        <Label text="{i18n>lastName}" class="sapUiSmallMargin"/>
+							        <Input id="inlastName" width="398px"/>
+							    </l:HorizontalLayout>
+								<l:HorizontalLayout class="sapUiContentPadding">
+							        <Label text="{i18n>firstName}" class="sapUiSmallMargin"/>
+							        <Input id="infirstName" width="430px"/>
+							    </l:HorizontalLayout>
+								<l:HorizontalLayout class="sapUiContentPadding">						    
+							        <Label text="{i18n>middleName}" class="sapUiSmallMargin"/>
+							        <Input id="inmiddleName" width="395px"/>
+							    </l:HorizontalLayout>	
+								<l:HorizontalLayout class="sapUiContentPadding">						    
+							        <Label text="{i18n>bDay}" class="sapUiSmallMargin"/>
+							        <DatePicker id="inbDay" placeholder="{i18n>pbDat}" width="358px"/>
+							    </l:HorizontalLayout>
+								<l:HorizontalLayout class="sapUiContentPadding">						    
+							        <Label text="{i18n>sex}" class="sapUiSmallMargin"/>
+							        <Input id="insex" placeholder="{i18n>psex}" width="430px"/>
+							    </l:HorizontalLayout>	
+								<l:HorizontalLayout class="sapUiContentPadding">							    
+							        <Label text="{i18n>telNumber}"  class="sapUiSmallMargin"/>
+							        <Input id="intelNumber" placeholder="{i18n>ptelNumber}" width="330px"/>
+							    </l:HorizontalLayout>
+								<l:HorizontalLayout class="sapUiContentPadding">							    
+									<Label text="{i18n>email}" class="sapUiSmallMargin"/>
+									<Input id="inemail" type="Email" class="sapUiSmallMarginBottom" change="validateMail" valueLiveUpdate="true" width="420px"/>
+									<CheckBox id="inCheckBox" text="{i18n>enableCheck}" select="handleSelect"/>
+							    </l:HorizontalLayout>	
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://add-photo" text="{i18n>addPhotos}">
+								<Panel>
+								<Button
+									id="addPhoto"
+									text="{i18n>addPhoto}"
+									press="onAddPhoto"
+									class="sapUiTinyMarginEnd"/>
+								</Panel>
+								<l:BlockLayout>
+									<l:BlockLayoutRow>
+										<l:BlockLayoutCell width="1">
+											<Image src="{='/services/image?id=' + ${customer/photo1} + '&amp;source=customer'}" densityAware="false" width="100%" height="100%" press="onAddPhoto">
+												<layoutData>
+													<FlexItemData growFactor="1"/>
+												</layoutData>
+											</Image>
+										</l:BlockLayoutCell>
+										<l:BlockLayoutCell width="1">
+											<Image src="{='/services/image?id=' + ${customer/photo2} + '&amp;source=customer'}" densityAware="false" width="50%" height="50%" press="onAddPhoto"></Image>
+											<Image src="{='/services/image?id=' + ${customer/photo3} + '&amp;source=customer'}" densityAware="false" width="50%" height="50%" press="onAddPhoto"></Image>
+										</l:BlockLayoutCell>
+									</l:BlockLayoutRow>
+								</l:BlockLayout>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</headerContainer>
+				</ObjectHeader>
 				<footer>
 					<Toolbar visible="{appView>/hasUIChanges}">
 						<ToolbarSpacer/>

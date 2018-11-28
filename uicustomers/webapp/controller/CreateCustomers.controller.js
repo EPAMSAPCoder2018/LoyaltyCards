@@ -2,8 +2,11 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/m/MessageToast",
 	"sap/ui/model/json/JSONModel",
-	"sap/ui/core/routing/History"
-], function (Controller, MessageToast, JSONModel, History) {
+	"sap/ui/core/routing/History",
+	'sap/m/Button',
+	'sap/m/Dialog',
+	'sap/m/Image'
+], function (Controller, MessageToast, JSONModel, History, Button, Dialog, Image) {
 	"use strict";
 
 	return Controller.extend("com.epam.uicreatecustomer.controller.CreateCustomers", {
@@ -51,6 +54,7 @@ sap.ui.define([
 		getRouter : function () {
 			return sap.ui.core.UIComponent.getRouterFor(this);
 		},
+		
 		onResetChanges : function (oEvent) {
 			var oHistory, sPreviousHash;
 			oHistory = History.getInstance();
