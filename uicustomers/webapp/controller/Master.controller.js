@@ -60,9 +60,20 @@ sap.ui.define([
 
 		},
 		
-		onSemanticButtonPress: function (oEvent){
+		onAdd: function (oEvent){
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			var rejectBtn = this.getView().byId("idAdd");
 			oRouter.navTo("createCustomers");
+			if(rejectBtn.getVisible()) {
+	           rejectBtn.setVisible(false);
+	       }
+		},
+		
+		onResetChanges : function (oEvent) {
+			var rejectBtn = this.getView().byId("idAdd");
+			if(rejectBtn.getVisible()) {
+	           rejectBtn.setVisible(true);
+	       }
 		},
 
 		onSearch: function (oEvt) {

@@ -21,7 +21,7 @@
 			</List>
 		</semantic:content>
 		<semantic:addAction>
-			<semantic:AddAction press="onSemanticButtonPress" class="sapUiTinyMarginEnd"/>
+			<semantic:AddAction id="idAdd" press="onAdd" class="sapUiTinyMarginEnd"/>
 		</semantic:addAction>
 		<semantic:sort>
 			<semantic:SortSelect change="onSortingChange" items="{ path: 'technicalModel>/sortOptions', sorter: { path: 'technicalModel>name' } }">
@@ -29,7 +29,7 @@
 			</semantic:SortSelect>
 		</semantic:sort>
 		<semantic:filter>
-			<semantic:FilterAction press="onSemanticButtonPress"/>
+			<semantic:FilterAction press="onSemanticButtons"/>
 		</semantic:filter>
 	</semantic:MasterPage>
 </mvc:View>
