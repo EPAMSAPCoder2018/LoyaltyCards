@@ -5,14 +5,11 @@
 	<semantic:DetailPage navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detail.title} {customer/ID}">
 		<semantic:content>
 			<ObjectHeader responsive="true" fullScreenOptimized="true" icon="{='/services/image?id=' + ${customer/photo2} + '&amp;source=customer'}"
-				iconAlt="{customer/lastName} {customer/firstName} {customer/middleName}" intro=""
+				iconAlt="{customer/lastName} {customer/firstName} {customer/middleName}" intro="                            "
 				title="{customer/lastName} {customer/firstName} {customer/middleName}" titleActive="true" titlePress="handleTitlePress"
-				number="{card/discount} %" backgroundDesign="Translucent" numberState="Success">
+				backgroundDesign="Translucent" numberState="Success">
 				<attributes>
-					<ObjectAttribute title="Пол" text="{customer/sex}"/>
-					<ObjectAttribute title="Эл. почта" text="{customer/email}" active="true"/>
-					<ObjectAttribute title="Телефон" text="{customer/telNumber}"/>
-					<ObjectAttribute title="Дата рождения" text="{customer/bDay}"/>
+					<ObjectAttribute text="{card/discount} %"/>	
 				</attributes>
 				<statuses>
 					<ObjectStatus title="Статус" text="Активен" state="Success"/>
@@ -21,15 +18,21 @@
 					<IconTabBar id="itb1" selectedKey="key3" upperCase="true" class="sapUiResponsiveContentPadding">
 						<items>
 							<IconTabFilter icon="sap-icon://hint">
-								<Text text="Info content goes here ..."/>
+								<ObjectAttribute title="Фамилия" text="{customer/lastName}"/>
+								<ObjectAttribute title="Имя" text="{customer/firstName}"/>
+								<ObjectAttribute title="Отчество" text="{customer/middleName}"/>
+								<ObjectAttribute title="Пол" text="{customer/sex}"/>
+								<ObjectAttribute title="Дата рождения" text="{customer/bDay}"/>
+								<ObjectAttribute title="Телефон" text="{customer/telNumber}"/>
+								<ObjectAttribute title="Эл. почта" text="{customer/email}" active="true"/>
+								<ObjectStatus    title="Статус" text="Активен" state="Success"/>
 							</IconTabFilter>
-							<IconTabFilter icon="sap-icon://attachment" count="3">
-								<Text text="Attachments go here ..."/>
+							<IconTabFilter icon="sap-icon://credit-card">
+								<ObjectAttribute title="Номер карты" text="243235332"/>
+								<ObjectAttribute title="Кем выдана" text="Соседи"/>
+								<ObjectAttribute title="Скидка" text="{card/discount} %"/>
 							</IconTabFilter>
-							<IconTabFilter icon="sap-icon://notes" count="12">
-								<Text text="Notes go here ..."/>
-							</IconTabFilter>
-							<IconTabFilter icon="sap-icon://group">
+							<IconTabFilter icon="sap-icon://add-photo">
 								<l:BlockLayout>
 									<l:BlockLayoutRow>
 										<l:BlockLayoutCell width="1">

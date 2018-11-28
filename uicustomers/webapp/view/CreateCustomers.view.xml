@@ -7,7 +7,7 @@
 				<headerContainer>
 					<IconTabBar id="itb1" selectedKey="key3" upperCase="true" class="sapUiResponsiveContentPadding">
 						<items>
-							<IconTabFilter icon="sap-icon://hint" text="{i18n>addInfo}">
+							<IconTabFilter icon="sap-icon://hint">
 								<l:HorizontalLayout class="sapUiContentPadding">
 							        <Label text="{i18n>lastName}" class="sapUiSmallMargin"/>
 							        <Input id="inlastName" width="398px"/>
@@ -38,7 +38,13 @@
 									<CheckBox id="inCheckBox" text="{i18n>enableCheck}" select="handleSelect"/>
 							    </l:HorizontalLayout>	
 							</IconTabFilter>
-							<IconTabFilter icon="sap-icon://add-photo" text="{i18n>addPhotos}">
+							<IconTabFilter icon="sap-icon://credit-card">
+								<l:HorizontalLayout class="sapUiContentPadding">
+							        <Label text="{i18n>cardNumber}" class="sapUiSmallMargin"/>
+							        <Input id="inCardNumber" width="398px"/>
+							    </l:HorizontalLayout>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://add-photo">
 								<Panel>
 								<Button
 									id="addPhoto"
